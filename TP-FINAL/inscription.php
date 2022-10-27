@@ -1,7 +1,8 @@
 <?php
 // Liaison avec la bdd, declaration des variables et gestion des erreurs 
-// Une variable est un conteneur qui va nous permettre de stocker des informations de différents types (texte, entier, booléen, etc.).
+// Variable : conteneur qui va nous permettre de stocker des informations de différents types (texte, entier, booléen, etc.).
 // Elles ne servent qu'à stocker des informations temporairement.
+// Fonction : sous-programme qui permet d'effectuer un ensemble d'instructions par simple appel de la fonction dans le corps du programme principal.
 
 include('db.php'); //inclure la page db.php
 if(isset($_POST['enregistrer'])){  // si toute les valeurs sont fourni, isset valide le form 
