@@ -1,26 +1,30 @@
 <?php
-include('db.php');
-if(isset($_POST['enregistrer'])){
-  $nom = $_POST['nom'];
-  $prenom = $_POST['prenom'];
-  $email = $_POST['email'];
-  $password = $_POST['password'];
+// Liaison avec la bdd, declaration des variables et gestion des erreurs 
+// Une variable est un conteneur qui va nous permettre de stocker des informations de différents types (texte, entier, booléen, etc.).
+// Elles ne servent qu'à stocker des informations temporairement.
+
+include('db.php'); //inclure la page db.php
+if(isset($_POST['enregistrer'])){  // si toute les valeurs sont fourni, isset valide le form 
+  $nom = $_POST['nom']; // déclaration de la variable nom en fonction des données rentrées dans le form
+  $prenom = $_POST['prenom']; // déclaration de la variable prenom en fonction des données rentrées dans le form 
+  $email = $_POST['email']; // déclaration de la variable email en fonction des données rentrées dans le form
+  $password = $_POST['password']; // déclaration de la variable  password en fonction des données rentrées dans le form
   
 
-$req = "INSERT INTO users(nom, prenom, email, password) VALUES(?,?,?,?)";
-$execute = $pdo->prepare($req);
-$stm = $execute->execute([$nom, $prenom, $email, $password]);
-echo "<center>Bravo BG t'es inscrit !</center>";
-// ICI DOIT APPARAITRE LE CODE PHP CONTENANT
-//    LA LIAISON AVEC LA BASE DE DONNEES
-//    LA DECLARATION DES VARIABLES
-//    ET LA GESTION DES ERREURS
+$req = "INSERT INTO users(nom, prenom, email, password) VALUES(?,?,?,?)"; // requete pour insérer un nouvel utilisateur en fonction des valeurs saisient dans le form
+$execute = $pdo->prepare($req); // prépare la requete à la bdd
+$stm = $execute->execute([$nom, $prenom, $email, $password]); // envoi la requete 
+echo "<center>Bravo BG t'es inscrit !</center>"; //echo sert à afficher des données
+
+// INSERER UN NEW USER : $requete = $bdd->exec('INSERT INTO users(nom, prenom, profession) VALUES("Aumont","Guillaume","Punk a Chien")');
+// MODIFIER UN USER : $requete = $bdd->exec('UPDATE users SET profession = "pecheur" WHERE prenom = "mathys"');
+// SUPPRIMER UN USER : $requete = $bdd->exec('DELETE FROM users WHERE prenom = "Guillaume"');
 }
 ?>
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
